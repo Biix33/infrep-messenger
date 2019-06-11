@@ -1,0 +1,17 @@
+#main-messages li > div {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #ffff75;
+  color: #444444;
+}
+
+#main-messages li > .message-self {
+  flex-direction: row-reverse;
+  background-color: #444444;
+  color: #ffff75;
+}
+
+#main-messages li > .author {
+  margin: 0 0.5rem;
+}

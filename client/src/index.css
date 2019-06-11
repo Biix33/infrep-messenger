@@ -43,24 +43,15 @@ code {
 
 #main-messages {
   flex: 8 1;
+  margin: 0;
   padding: 1rem;
-  /* background: url('../public/img/blue-2384333_1280.png'); */
   background-color: aliceblue;
 }
 
-#main-messages div {
-  border-radius: 4px;
-  padding: 0.5rem;
-  background-color: #ffff75;
-  color: #444444;
-  box-shadow: 2px 2px 4px #444;
+#main-messages li {
   margin-bottom: 0.5rem;
-}
-
-#main-messages .me {
-  background-color: #444444;
-  color: #ffff75;
-  text-align: right;
+  list-style-type: none;
+  box-shadow: 2px 2px 4px #444;
 }
 
 #form-message {

@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  background-color: #272727;
+}
+
+.header .username {
+  flex: 8 1;
+  padding: 1rem 0;
+  background-color: #121212;
+  color: aliceblue;
+  text-align: center;
+}
+
+.header .avatar {
+  padding: 1rem;
+}

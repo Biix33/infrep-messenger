@@ -20,23 +20,6 @@ code {
   background-color: lightskyblue;
 }
 
-.header {
-  display: flex;
-  background-color: #272727;
-}
-
-.header .username {
-  flex: 8 1;
-  padding: 1rem 0;
-  background-color: #121212;
-  color: aliceblue;
-  text-align: center;
-}
-
-.header .avatar {
-  padding: 1rem;
-}
-
 .avatar img {
   border-radius: 50%;
 }
@@ -46,12 +29,9 @@ code {
   margin: 0;
   padding: 1rem;
   background-color: aliceblue;
-}
-
-#main-messages li {
-  margin-bottom: 0.5rem;
-  list-style-type: none;
-  box-shadow: 2px 2px 4px #444;
+  background-image: url('./img/blue-2384333_1280.png');
+  background-size: cover;
+  overflow: scroll;
 }
 
 #form-message {
@@ -59,20 +39,4 @@ code {
   align-items: center;
   justify-content: center;
   background-color: red;
-}
-
-#form-message form {
-  display: flex;
-  flex: 1;
-  height: 100%;
-}
-
-textarea {
-  flex: 8 1;
-  margin: 0;
-  border: none;
-}
-
-button[type="submit"] {
-  border: none;
 }

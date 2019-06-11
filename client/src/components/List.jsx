@@ -2,44 +2,23 @@ import React from "react";
 import Message from "./Message";
 
 class List extends React.Component {
-  state = {
-    messages: [
-      {
-        author: "Boby",
-        content: "Hallo le monde"
-      },
-      {
-        author: "Franck",
-        content: "Houla gil tu montes à pied en ce moment"
-      },
-      {
-        author: "Lola",
-        content: "Papa j'ai faim !"
-      },
-      {
-        author: "Monica",
-        content: "Mais qu'est-ce qui se passe"
-      },
-      {
-        author: "Boby",
-        content: "Time to sleep children"
-      },
-      {
-        author: "Boby",
-        content: "Parlons vite, parlons bien !"
-      }
-    ]
-  };
-
   render() {
+    let author;
+    let me;
     return (
       <ul id="main-messages">
-        {this.state.messages.map((message, i) => {
+        {this.props.messages.map((message, i) => {
+          if (message.author === author) {
+            me = true;
+          }
+          author = message.author;
+
           return (
             <li key={i}>
               <Message
-                author={message.author}
+                author={message.author[0]}
                 self={message.author === this.props.currentUser}
+                me={me}
               >
                 {message.content}
               </Message>

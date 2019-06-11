@@ -3,19 +3,14 @@ import "./styles.css";
 import Avatar from "../Avatar/avatar.index";
 
 function Message(props) {
-  const { author, children, self } = props;
-  const classMe = "message-self";
+  const { author, children, self, me } = props;
+  const classMe = "self";
   return (
-    <div className={self ? classMe : "message-other"}>
+    <div className={self ? classMe : ""}>
       <div className="author">
-        <div className="avatar">
-          <Avatar />
-        </div>
-        <div>
-          <small>{author}</small>
-        </div>
+        <div className="avatar">{!me ? <Avatar /> : ""}</div>
       </div>
-      <div className="message-content">{children}</div>
+      <div className="message">{children}</div>
     </div>
   );
 }

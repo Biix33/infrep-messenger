@@ -1,17 +1,30 @@
+
+#main-messages li {
+  margin-bottom: 0.5rem;
+  list-style-type: none;
+}
+
 #main-messages li > div {
   display: flex;
+}
+
+#main-messages .message{
   padding: 0.5rem;
   border-radius: 4px;
+  box-shadow: 2px 2px 4px #444;
   background-color: #ffff75;
   color: #444444;
 }
 
-#main-messages li > .message-self {
+#main-messages .self{
   flex-direction: row-reverse;
+}
+
+#main-messages .self .message {
   background-color: #444444;
   color: #ffff75;
 }
 
-#main-messages li > .author {
+#main-messages .author {
   margin: 0 0.5rem;
 }

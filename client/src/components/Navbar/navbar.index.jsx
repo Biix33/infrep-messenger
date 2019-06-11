@@ -1,5 +1,6 @@
 import React from "react";
 import Avatar from "../Avatar/avatar.index";
+import "./navbar.styles.css";
 
 function Navbar(props) {
   const { currentUser } = props;

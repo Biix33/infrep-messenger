@@ -2,6 +2,26 @@ import React from "react";
 import Message from "./Message";
 
 class List extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.listRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.scrollBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollBottom();
+  }
+
+  scrollBottom = () => {
+    // Forcer le scroll en bas de la liste
+    const $lastLi = this.listRef.current;
+    $lastLi.scrollIntoView({ behavior: "smooth" });
+  };
+
   render() {
     let author;
     let me;
@@ -25,6 +45,7 @@ class List extends React.Component {
             </li>
           );
         })}
+        <li ref={this.listRef}>Dummy content</li>
       </ul>
     );
   }

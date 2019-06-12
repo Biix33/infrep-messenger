@@ -31,6 +31,18 @@ class App extends React.Component {
       {
         author: "Boby",
         content: "Parlons vite, parlons bien !"
+      },
+      {
+        author: "Monica",
+        content: "Mais qu'est-ce qui se passe"
+      },
+      {
+        author: "Boby",
+        content: "Time to sleep children"
+      },
+      {
+        author: "Boby",
+        content: "Parlons vite, parlons bien !"
       }
     ]
   };
@@ -50,10 +62,12 @@ class App extends React.Component {
     return (
       <div className="container">
         <Navbar currentUser={this.state.currentUser} />
-        <List
-          currentUser={this.state.currentUser}
-          messages={this.state.messages}
-        />
+        <div className="scroller">
+          <List
+            currentUser={this.state.currentUser}
+            messages={this.state.messages}
+          />
+        </div>
         <section id="form-message">
           <Form onSend={this.addMessage} />
         </section>

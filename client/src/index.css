@@ -15,23 +15,30 @@ code {
 .container {
   display: flex;
   flex-direction: column;
-  flex: 1;
   height: 100vh;
-  background-color: lightskyblue;
+
+  background-color: aliceblue;
+  background-image: url("./img/blue-2384333_1280.png");
+  background-size: cover;
 }
 
 .avatar img {
   border-radius: 50%;
 }
 
+.scroller {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-height: calc(100vh - 90px);
+}
+
 #main-messages {
-  flex: 8 1;
   margin: 0;
   padding: 1rem;
-  background-color: aliceblue;
-  background-image: url('./img/blue-2384333_1280.png');
-  background-size: cover;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #form-message {

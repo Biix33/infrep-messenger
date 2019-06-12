@@ -13,7 +13,7 @@ export default class Form extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.onSend(this.state.message);
-    this.state.message = "";
+    this.setState({ message: "" });
   };
 
   render() {

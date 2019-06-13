@@ -3,62 +3,46 @@ import logo from "../logo.svg";
 import List from "./List";
 import Navbar from "./Navbar/navbar.index";
 import Form from "./Form/form.index";
+import Messenger from "../services/Messenger";
 
 class App extends React.Component {
   state = {
-    currentUser: "Boby",
-    messages: [
-      {
-        author: "Boby",
-        content: "Hallo le monde"
-      },
-      {
-        author: "Franck",
-        content: "Houla gil tu montes à pied en ce moment"
-      },
-      {
-        author: "Lola",
-        content: "Papa j'ai faim !"
-      },
-      {
-        author: "Monica",
-        content: "Mais qu'est-ce qui se passe"
-      },
-      {
-        author: "Boby",
-        content: "Time to sleep children"
-      },
-      {
-        author: "Boby",
-        content: "Parlons vite, parlons bien !"
-      },
-      {
-        author: "Monica",
-        content: "Mais qu'est-ce qui se passe"
-      },
-      {
-        author: "Boby",
-        content: "Time to sleep children"
-      },
-      {
-        author: "Boby",
-        content: "Parlons vite, parlons bien !"
-      }
-    ]
+    currentUser: undefined,
+    messages: []
   };
 
-  addMessage = content => {
-    const newMessage = {
-      content: content,
-      author: this.state.currentUser
-    };
+  componentWillMount() {
+    let username;
+    while (!username) {
+      username = prompt("What's your name bro ?");
+    }
+    this.setState({ currentUser: username });
+  }
 
+  componentDidMount() {
+    // connect to socket server
+    this.messenger = new Messenger(this.addMessage);
+  }
+
+  addMessage = newMessage => {
     const newList = [...this.state.messages, newMessage];
 
     this.setState({ messages: newList });
   };
 
+  handleSubmit = content => {
+    const newMessage = {
+      content: content,
+      author: this.state.currentUser
+    };
+
+    // Envoi message au serveur
+    this.messenger.send(newMessage);
+    this.addMessage(newMessage);
+  };
+
   render() {
+    if (!this.state.currentUser) return <div>Infrep Messenger !</div>;
     return (
       <div className="container">
         <Navbar currentUser={this.state.currentUser} />
@@ -69,7 +53,7 @@ class App extends React.Component {
           />
         </div>
         <section id="form-message">
-          <Form onSend={this.addMessage} />
+          <Form onSend={this.handleSubmit} />
         </section>
       </div>
     );

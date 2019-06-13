@@ -23,8 +23,9 @@ export default class Form extends React.Component {
           className="input-message"
           value={this.state.message}
           onChange={this.handleChange}
+          placeholder="Ecrivez ici..."
         />
-        <button type="submit" name="send">
+        <button type="submit" disabled={!this.state.message.trim() ? true : false}>
           Envoyer
         </button>
       </form>

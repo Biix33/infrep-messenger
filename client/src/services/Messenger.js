@@ -1,11 +1,9 @@
 import socketIO from "socket.io-client";
 
 export default class Messenger {
-  constructor(onReceive) {
+  constructor(user) {
     this.socket = socketIO("http://localhost:8000");
-    this.socket.on("new_message", message => {
-      onReceive(message);
-    });
+    this.socket.emit("new_user", user);
   }
 
   /**
@@ -14,6 +12,11 @@ export default class Messenger {
    */
   send = message => {
     this.socket.emit("new_message", message);
-    console.log("FAKE SEND");
+  };
+
+  receive = onReceive => {
+    this.socket.on("new_message", message => {
+      onReceive(message);
+    });
   };
 }

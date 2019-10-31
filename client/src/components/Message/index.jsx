@@ -3,7 +3,7 @@ import "./styles.css";
 import Avatar from "../Avatar/avatar.index";
 
 function Message(props) {
-  const { author, children, self, me } = props;
+  const { children, self, me } = props;
   const classMe = "self";
   return (
     <div className={self ? classMe : ""}>

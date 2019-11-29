@@ -9,8 +9,8 @@ function Message(props) {
     <div className={self ? classMe : ""}>
       <div className="author">
         <div className="avatar">{!me ? <Avatar /> : ""}</div>
+        <div className="message">{children}</div>
       </div>
-      <div className="message">{children}</div>
     </div>
   );
 }

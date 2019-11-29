@@ -2,13 +2,14 @@ const User = require("../../model/User");
 const passwordHash = require("password-hash");
 
 async function signup(req, res) {
-  const { password, email } = req.body;
+  const { username, password, email } = req.body;
   if (!email || !password)
     return res.status(400).json({
       text: "invalid request"
     });
 
   const user = {
+    username,
     email,
     password: passwordHash.generate(password)
   };
@@ -30,10 +31,11 @@ async function signup(req, res) {
     const userObject = await userData.save();
     return res.status(200).json({
       text: "Success",
-      token: userObject.getToken()
+      token: userObject.getToken(),
+      username: username
     });
   } catch (e) {
-    return res.status(500).json({ error });
+    return res.status(500).json({ e });
   }
 }
 
@@ -60,7 +62,9 @@ async function login(req, res) {
       token: foundUser.getToken(),
       text: "Authentication success"
     });
-  } catch (e) {}
+  } catch (e) {
+    return res.status(500).json({ e });
+  }
 }
 
 exports.signup = signup;

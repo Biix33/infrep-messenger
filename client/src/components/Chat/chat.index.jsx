@@ -1,4 +1,5 @@
 import React from "react";
+import "./chat.design.css";
 import List from "../List";
 import Navbar from "../Navbar/navbar.index";
 import Form from "../Form/form.index";

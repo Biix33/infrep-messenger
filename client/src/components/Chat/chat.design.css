@@ -1,0 +1,25 @@
+.avatar img {
+  border-radius: 50%;
+}
+
+.scroller {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-height: calc(100vh - 90px);
+}
+
+#main-messages {
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+}
+
+#form-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}

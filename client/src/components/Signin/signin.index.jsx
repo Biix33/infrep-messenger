@@ -1,10 +1,11 @@
 import React from "react";
-import "./signin.style.css";
+import API from "../../services/API";
 
 export default class Signin extends React.Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    errors: []
   };
 
   handleChange = event => {
@@ -13,19 +14,24 @@ export default class Signin extends React.Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     const { email, password } = this.state;
     if (!email || email.length === 0 || !password || password.length === 0)
       return;
-    localStorage.setItem("user", email);
+    try {
+      const { data } = await API.signin(email, password);
+      localStorage.setItem("token", data.token);
+    } catch (e) {
+      return console.error(e);
+    }
     return (window.location = "/chat");
   };
 
   render() {
     const { email, password } = this.state;
     return (
-      <div className="form-signin">
+      <div className="form-wrapper">
         <form action="" method="POST" onSubmit={this.handleSubmit}>
           <div className="form-row">
             <label htmlFor="email">Email</label>
@@ -47,7 +53,19 @@ export default class Signin extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit">Se connecter</button>
+          <div className="form-row">
+            <button
+              type="submit"
+              disabled={!email.trim() || !password.trim() ? true : false}
+            >
+              Se connecter
+            </button>
+          </div>
+          <div className="form-row">
+            <a href="/signup" className="btn">
+              Créer un compte
+            </a>
+          </div>
         </form>
       </div>
     );

@@ -22,28 +22,25 @@ code {
   background-size: cover;
 }
 
-.avatar img {
-  border-radius: 50%;
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-.scroller {
-  flex: 1;
-
+.form-row {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  max-height: calc(100vh - 90px);
 }
 
-#main-messages {
-  margin: 0;
-  padding: 1rem;
-  overflow: auto;
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  background-color: #f4f4f4;
 }
 
-#form-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: red;
+.btn:hover {
+  background-color: transparent;
 }

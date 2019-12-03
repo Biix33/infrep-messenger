@@ -12,7 +12,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Signin} />
           <Route exact path="/signup" component={Signup} />
-          <PrivateRoute exact path="/chat" component={Chat} />
+          <PrivateRoute path="/chat" component={Chat} />
         </Switch>
       </div>
     );

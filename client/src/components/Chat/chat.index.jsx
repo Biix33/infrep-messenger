@@ -14,9 +14,6 @@ export default class Chat extends React.Component {
 
   componentWillMount() {
     const username = localStorage.getItem("user");
-    // while (!username) {
-    //   username = prompt("What's your name bro ?");
-    // }
     this.addUser(username);
   }
 
@@ -47,7 +44,6 @@ export default class Chat extends React.Component {
   };
 
   render() {
-    if (!this.state.currentUser) return <div>Infrep Messenger !</div>;
     return (
       <div className="container">
         <Navbar currentUser={this.state.currentUser} />

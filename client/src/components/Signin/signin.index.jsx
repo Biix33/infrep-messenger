@@ -22,6 +22,7 @@ export default class Signin extends React.Component {
     try {
       const { data } = await API.signin(email, password);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", data.username);
     } catch (e) {
       return console.error(e);
     }

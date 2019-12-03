@@ -48,6 +48,7 @@ async function login(req, res) {
 
   try {
     const foundUser = await User.findOne({ email });
+    
     if (!foundUser)
       return res.status(401).json({
         text: "Identifiants invalides"
@@ -60,7 +61,8 @@ async function login(req, res) {
 
     return res.status(200).json({
       token: foundUser.getToken(),
-      text: "Authentication success"
+      text: "Authentication success",
+      username: foundUser.username
     });
   } catch (e) {
     return res.status(500).json({ e });

@@ -94,9 +94,6 @@ export default class Signup extends React.Component {
   };
 
   render() {
-    if (API.isAuthenticated()) {
-      return window.location = "/chat";
-    }
     const { pseudo, email, password, passwordCheck, formValid } = this.state;
     return (
       <div className="form-wrapper">

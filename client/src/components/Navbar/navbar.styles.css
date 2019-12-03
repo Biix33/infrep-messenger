@@ -1,12 +1,13 @@
 .header {
   display: flex;
-  background-color: #272727;
+  background-color: #9c8bff;
+  box-shadow: 4px 4px 4px #4134649d;
 }
 
 .header .username {
   flex: 8 1;
   padding: 1rem 0;
-  background-color: #121212;
+  background-color: #9c8bff;
   color: aliceblue;
   text-align: center;
 }

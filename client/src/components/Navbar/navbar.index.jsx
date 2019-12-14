@@ -1,19 +1,49 @@
 import React from "react";
-import Avatar from "../Avatar/avatar.index";
 import "./navbar.styles.css";
+import User from "../User/user.index";
 
-function Navbar(props) {
-  const { currentUser } = props;
-  return (
-    <nav className="header">
-      <div className="avatar">
-        <Avatar />
+export default class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleSignupClick = this.handleSignupClick.bind(this);
+    this.state = {
+      isLoggedIn: false
+    };
+  }
+
+  handleLoginClick(event) {
+    event.preventDefault();
+    this.props.handleLoggingIn();
+  }
+
+  handleSignupClick(event) {
+    event.preventDefault();
+    this.props.handleSignUp();
+  }
+
+  render() {
+    const { currentUser } = this.props;
+    const { isLoggedIn } = this.state;
+
+    const navLinks = (
+      <div className="nav-items">
+        <a href="/signup" className="nav-link" onClick={this.handleSignupClick}>
+          Créer un compte
+        </a>
+        <a href="/login" className="nav-link" onClick={this.handleLoginClick}>
+          Se connecter
+        </a>
       </div>
-      <div className="username">
-        <span>{currentUser}</span>
-      </div>
-    </nav>
-  );
+    );
+
+    return (
+      <nav className="nav-bar">
+        <a href="/" className="nav-brand">
+          Welcome Messenger
+        </a>
+        {isLoggedIn ? <User currentUser={currentUser} /> : navLinks}
+      </nav>
+    );
+  }
 }
-
-export default Navbar;

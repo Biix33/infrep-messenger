@@ -4,7 +4,7 @@
   height: 100%;
 }
 
-textarea, button[type="submit"] {
+textarea, #send-btn {
   margin: 1rem;
   border: none;
   border-radius: 50px;
@@ -14,4 +14,5 @@ textarea, button[type="submit"] {
 textarea {
   flex: 8 1;
   padding: 0.4rem;
+  resize: none;
 }

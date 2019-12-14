@@ -17,6 +17,7 @@ export default class Signin extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     const { email, password } = this.state;
+    const { onSubmit } = this.props;
     if (!email || email.length === 0 || !password || password.length === 0)
       return;
     try {

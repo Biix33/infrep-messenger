@@ -52,20 +52,20 @@ app.listen(8000, err => {
 });
 
 socketServer.on("connection", socket => {
-  socket.on("new_user", user => {
-    sockets.push((socket.user = user));
+  socket.on("user_join", username => {
+    sockets.push((socket.user = username));
 
     const data = {
-      user: user,
+      user: username,
       count: sockets.length
     };
 
-    socket.broadcast.emit("new_user", data);
-    socket.emit("new_user", data);
+    socket.broadcast.emit("user_join", data);
+    socket.emit("user_join", data);
   });
 
   socket.on("disconnect", () => {
-    sockets = sockets.filter(user => user != socket);
+    sockets = sockets.filter(user => user !== socket);
     console.log(sockets);
     const data = {
       user: socket.user,

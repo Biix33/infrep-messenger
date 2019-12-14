@@ -11,6 +11,16 @@
   max-height: calc(100vh - 90px);
 }
 
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  background-color: aliceblue;
+  background-image: url("../../img/blue-2384333_1280.png");
+  background-size: cover;
+}
+
 #main-messages {
   margin: 0;
   padding: 1rem;

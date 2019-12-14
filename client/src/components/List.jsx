@@ -45,7 +45,8 @@ class List extends React.Component {
             </li>
           );
         })}
-        <li ref={this.listRef}>Dummy content</li>
+        {/* @HACK: dummy li to force scroll bottom */}
+        <li ref={this.listRef}></li>
       </ul>
     );
   }

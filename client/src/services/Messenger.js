@@ -1,22 +1,33 @@
 import socketIO from "socket.io-client";
 
 export default class Messenger {
-  constructor(user) {
+  constructor(onMessageReceived, onUserChanged) {
     this.socket = socketIO("http://localhost:8000");
-    this.socket.emit("new_user", user);
+
+    this.socket.on("new_message", message => {
+      onMessageReceived(message);
+    });
+
+    this.socket.on("user_join", data => {
+      onUserChanged(data);
+    });
+
+    this.socket.on("user_leave", onUserChanged);
   }
 
   /**
    * Send a new message to the server
    * @param {object} message
    */
-  send = message => {
+  send(message) {
     this.socket.emit("new_message", message);
-  };
+  }
 
-  receive = onReceive => {
-    this.socket.on("new_message", message => {
-      onReceive(message);
-    });
-  };
+  join(username) {
+    this.socket.emit("user_join", username);
+  }
+
+  leave(username) {
+    this.socket.emit("user_leave", username);
+  }
 }

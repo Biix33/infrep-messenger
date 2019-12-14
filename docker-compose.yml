@@ -1,41 +1,41 @@
 version: "3"
 
 services:
-    client:
-        build: client
-        restart: always
-        ports:
-            - "3000:3000"
-        volumes:
-            - ./client:/client
-            - /client/node_modules
-        links:
-            - server
-        networks:
-            - webappnetwork    
-    mongodb:
-        image: mongo
-        restart: always
-        container_name: mongodb
-        volumes:
-            - ./data-node:/data/db
-        ports:
-            - "27017:27017"
-        command: mongod --noauth
-        networks:
-            - webappnetwork
-    server:
-        build: server
-        restart: always
-        ports:
-            - "8000:8000"
-        volumes:
-            - ./server:/server
-            - /server/node_modules
-        depends_on:
-            - mongodb
-        networks:
-            - webappnetwork
+  client:
+    build: client
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    links:
+      - server
+    networks:
+      - webappnetwork
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    volumes:
+      - ./data-node:/data/db
+    ports:
+      - "27017:27017"
+    command: mongod --noauth --wiredTigerCacheSizeGB 1.5
+    networks:
+      - webappnetwork
+  server:
+    build: server
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - webappnetwork
 networks:
-    webappnetwork:
-        driver: bridge
+  webappnetwork:
+    driver: bridge

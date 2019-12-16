@@ -84,7 +84,7 @@ export default class Signup extends React.Component {
     )
       return;
     try {
-      const { data } = await API.signup({username, email, password});
+      const { data } = await API.signup({ username, email, password });
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", data.username);
       window.location = "/chat";
@@ -93,61 +93,69 @@ export default class Signup extends React.Component {
     }
   };
 
+  componentDidMount() {
+    this.setState({ formValid: true });
+  }
+
   render() {
     const { pseudo, email, password, passwordCheck, formValid } = this.state;
     return (
       <div className="form-wrapper">
-        <FormErrors formErrors={this.state.formErrors} />
-        <div>
-          <div className="form-row">
-            <label htmlFor="username">Pseudo</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              value={pseudo}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="form-row">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="form-row">
-            <label htmlFor="password">Mot de passe</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={password}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="form-row">
-            <label htmlFor="password-check">Confirmation mot de passe</label>
-            <input
-              type="password"
-              name="password-check"
-              id="passwordCheck"
-              value={passwordCheck}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="form-row">
-            <button type="submit" disabled={!formValid} onClick={this.handleSubmit}>
-              S'inscrire
-            </button>
-          </div>
+        <h4>Créer un compte</h4>
+        {!formValid && <FormErrors formErrors={this.state.formErrors} />}
+        <div className="form-row">
+          <label htmlFor="username">Pseudo</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={pseudo}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <label htmlFor="password">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <label htmlFor="password-check">Confirmation mot de passe</label>
+          <input
+            type="password"
+            name="password-check"
+            id="passwordCheck"
+            value={passwordCheck}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <button
+            className="btn"
+            type="submit"
+            disabled={!formValid}
+            onClick={this.handleSubmit}
+          >
+            S'inscrire
+          </button>
         </div>
       </div>
     );

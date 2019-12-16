@@ -33,7 +33,10 @@ const webServer = http.Server(app);
 const socketServer = socketIO(webServer);
 
 mongoose
-  .connect("mongodb://mongodb/db", { useNewUrlParser: true })
+  .connect("mongodb://mongodb/db", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
     console.log("Connected to mongodb");
   })
@@ -42,7 +45,7 @@ mongoose
     console.log(e);
   });
 
-app.listen(8000, err => {
+webServer.listen(8000, err => {
   if (err) {
     console.log("Impossible de démarrer le serveur");
     console.log(err);
@@ -52,6 +55,8 @@ app.listen(8000, err => {
 });
 
 socketServer.on("connection", socket => {
+  console.log("CONNECT SOCKET");
+  
   socket.on("user_join", username => {
     sockets.push((socket.user = username));
 

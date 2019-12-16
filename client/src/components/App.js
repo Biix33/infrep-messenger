@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Signin from "./Signin/signin.index";
-import Signup from "./Signup/signup.index";
 import Chat from "./Chat/chat.index";
 import API from "../services/API";
 import Home from "./Home/home.index";
@@ -19,31 +17,31 @@ class App extends React.Component {
     return (
       <div className="container">
         <Switch>
-          <Route exact path="/" component={Home} />
           <Route
             exact
-            path="/login"
+            path="/"
             render={() => {
               if (API.isAuthenticated()) {
-                return <Redirect to="/" />;
+                return <Redirect to="/chat" />;
               }
-              return <Signin onSubmit={this.onUserConnect} />;
+              return <Home />;
             }}
           />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/logout" component={Signup} />
+          <Route
+            exact
+            path="/logout"
+            render={() => {
+              localStorage.clear();
+              return <Redirect to="/" />;
+            }}
+          />
           <Route
             path="/chat"
             render={() => {
               if (!API.isAuthenticated()) {
-                return <Redirect to="/login" />;
+                return <Redirect to="/" />;
               }
-              return (
-                <Chat
-                  messenger={this.messenger}
-                  currentUser={this.state.currentUser}
-                />
-              );
+              return <Chat />;
             }}
           />
         </Switch>

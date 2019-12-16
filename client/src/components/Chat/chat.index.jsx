@@ -10,13 +10,14 @@ import Messenger from "../../services/Messenger";
 export default class Chat extends React.Component {
   state = {
     messages: [],
-    usersCount: 0
+    usersCount: 0,
+    currentUser: localStorage.getItem("user")
   };
 
   componentDidMount() {
     // connect to socket server
     this.messenger = new Messenger(this.addMessage, this.updateUsers);
-    this.messenger.join(this.props.currentUser);
+    this.messenger.join(this.state.currentUser);
   }
 
   addMessage = newMessage => {
@@ -33,7 +34,7 @@ export default class Chat extends React.Component {
   handleSubmit = content => {
     const newMessage = {
       content: content,
-      author: this.props.currentUser
+      author: this.state.currentUser
     };
     
     // Envoi message au serveur
@@ -44,14 +45,14 @@ export default class Chat extends React.Component {
   render() {
     return (
       <div id="chat-container">
-        <Navbar currentUser={this.props.currentUser} />
+        <Navbar currentUser={this.state.currentUser} />
         <div>
           Il y a <strong>{this.state.usersCount}</strong> utilisateurs connectés
         </div>
 
         <div className="scroller">
           <List
-            currentUser={this.props.currentUser}
+            currentUser={this.state.currentUser}
             messages={this.state.messages}
           />
         </div>

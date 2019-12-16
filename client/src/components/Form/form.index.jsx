@@ -25,7 +25,12 @@ export default class Form extends React.Component {
           onChange={this.handleChange}
           placeholder="Ecrivez ici..."
         />
-        <button id="send-btn" type="submit" disabled={!this.state.message.trim() ? true : false}>
+        <button
+          className="btn"
+          id="send-btn"
+          type="submit"
+          disabled={!this.state.message.trim() ? true : false}
+        >
           Envoyer
         </button>
       </form>

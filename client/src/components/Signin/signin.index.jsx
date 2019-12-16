@@ -17,7 +17,6 @@ export default class Signin extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     const { email, password } = this.state;
-    const { onSubmit } = this.props;
     if (!email || email.length === 0 || !password || password.length === 0)
       return;
     try {
@@ -27,7 +26,7 @@ export default class Signin extends React.Component {
     } catch (e) {
       return console.error(e);
     }
-    return (window.location = "/chat");
+    return window.location = '/';
   };
 
   render() {
@@ -57,16 +56,12 @@ export default class Signin extends React.Component {
           </div>
           <div className="form-row">
             <button
+            className="btn"
               type="submit"
               disabled={!email.trim() || !password.trim() ? true : false}
             >
               Se connecter
             </button>
-          </div>
-          <div className="form-row">
-            <a href="/signup" className="btn">
-              Créer un compte
-            </a>
           </div>
         </form>
       </div>

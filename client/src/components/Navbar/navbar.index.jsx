@@ -24,7 +24,6 @@ export default class Navbar extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    const { isLoggedIn } = this.state;
 
     const navLinks = (
       <div className="nav-items">
@@ -42,7 +41,7 @@ export default class Navbar extends React.Component {
         <a href="/" className="nav-brand">
           Welcome Messenger
         </a>
-        {isLoggedIn ? <User currentUser={currentUser} /> : navLinks}
+        {currentUser ? <User currentUser={currentUser} /> : navLinks}
       </nav>
     );
   }

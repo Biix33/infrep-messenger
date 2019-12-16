@@ -2,7 +2,7 @@ import socketIO from "socket.io-client";
 
 export default class Messenger {
   constructor(onMessageReceived, onUserChanged) {
-    this.socket = socketIO("http://localhost:8000");
+    this.socket = socketIO("http://localhost:8000/");
 
     this.socket.on("new_message", message => {
       onMessageReceived(message);

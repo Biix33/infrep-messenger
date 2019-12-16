@@ -17,7 +17,7 @@ code {
   flex-direction: column;
   height: 100vh;
 
-  background-color: #fff;
+  background-color: #f1f3f6;
   background-size: cover;
 }
 
@@ -31,37 +31,45 @@ code {
 .form-wrapper {
   padding: 2rem;
   margin-top: 2rem;
-  border-radius: .50rem;
+  border-radius: 0.5rem;
   width: 50%;
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: #d4ccff;
-  box-shadow: 0px 0px 24px #b4b4b4;
+  flex-direction: column;
+  background-color: #f1f3f6;
+  box-shadow: 24px 24px 80px #3754AA40,
+    -24px -24px 80px #fff;
 }
 
 .form-row {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
 input {
   border: none;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
 }
 
 label {
-  color: #9c8bff;
+  color: #9c8bff5e;
 }
 
 .btn {
-  text-decoration: none;
-  display: inline-block;
+  padding: .8rem;
+  border: none;
+  border-radius: 50px;
+  max-width: 66%;
   text-align: center;
-  background-color: #f4f4f4;
+  background-color: #9c8bff;
+  color: #fff;
 }
 
 .btn:hover {
-  background-color: transparent;
+  background-color: #a292fb;
 }

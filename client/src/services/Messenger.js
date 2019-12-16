@@ -23,6 +23,10 @@ export default class Messenger {
     this.socket.emit("new_message", message);
   }
 
+  /**
+   * Inform server that user connected
+   * @param {String} username 
+   */
   join(username) {
     this.socket.emit("user_join", username);
   }

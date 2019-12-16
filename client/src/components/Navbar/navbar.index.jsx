@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.styles.css";
-import User from "../User/user.index";
+import User from "../UsersInfo/UsersInfo";
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, usersCount } = this.props;
 
     const navLinks = (
       <div className="nav-items">
@@ -41,7 +41,13 @@ export default class Navbar extends React.Component {
         <a href="/" className="nav-brand">
           Welcome Messenger
         </a>
-        {currentUser ? <User currentUser={currentUser} /> : navLinks}
+        <div className="right">
+          {currentUser ? (
+            <User currentUser={currentUser} usersCount={usersCount} />
+          ) : (
+            navLinks
+          )}
+        </div>
       </nav>
     );
   }

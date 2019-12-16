@@ -55,10 +55,10 @@ webServer.listen(8000, err => {
 });
 
 socketServer.on("connection", socket => {
-  console.log("CONNECT SOCKET");
-  
+  sockets.push(socket);
+
   socket.on("user_join", username => {
-    sockets.push((socket.user = username));
+    socket.user = username;
 
     const data = {
       user: username,
@@ -71,7 +71,6 @@ socketServer.on("connection", socket => {
 
   socket.on("disconnect", () => {
     sockets = sockets.filter(user => user !== socket);
-    console.log(sockets);
     const data = {
       user: socket.user,
       count: sockets.length

@@ -36,25 +36,19 @@ export default class Chat extends React.Component {
       content: content,
       author: this.state.currentUser
     };
-    
+
     // Envoi message au serveur
     this.messenger.send(newMessage);
     this.addMessage(newMessage);
   };
 
   render() {
+    const { currentUser, usersCount, messages } = this.state;
     return (
       <div id="chat-container">
-        <Navbar currentUser={this.state.currentUser} />
-        <div>
-          Il y a <strong>{this.state.usersCount}</strong> utilisateurs connectés
-        </div>
-
+        <Navbar currentUser={currentUser} usersCount={usersCount} />
         <div className="scroller">
-          <List
-            currentUser={this.state.currentUser}
-            messages={this.state.messages}
-          />
+          <List currentUser={currentUser} messages={messages} />
         </div>
         <section id="form-message">
           <Form onSend={this.handleSubmit} />

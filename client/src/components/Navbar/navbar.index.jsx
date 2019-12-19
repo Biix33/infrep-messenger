@@ -24,7 +24,6 @@ export default class Navbar extends React.Component {
 
   render() {
     const { currentUser, usersCount } = this.props;
-
     const navLinks = (
       <div className="nav-items">
         <a href="/signup" className="nav-link" onClick={this.handleSignupClick}>
@@ -43,7 +42,7 @@ export default class Navbar extends React.Component {
         </a>
         <div className="right">
           {currentUser ? (
-            <User currentUser={currentUser} usersCount={usersCount} />
+            <User user={currentUser} usersCount={usersCount} />
           ) : (
             navLinks
           )}

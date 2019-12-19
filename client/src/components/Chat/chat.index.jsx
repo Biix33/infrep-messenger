@@ -43,7 +43,8 @@ export default class Chat extends React.Component {
   };
 
   render() {
-    const { currentUser, usersCount, messages } = this.state;
+    const { usersCount, messages } = this.state;
+    const { currentUser } = this.props;
     return (
       <div id="chat-container">
         <Navbar currentUser={currentUser} usersCount={usersCount} />

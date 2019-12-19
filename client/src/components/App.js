@@ -9,11 +9,13 @@ class App extends React.Component {
     currentUser: localStorage.getItem("user")
   };
 
-  onUserConnect = username => {
-    this.setState({ currentUser: username });
+  onUserConnect = data => {
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
   };
 
   render() {
+    const { currentUser } = this.state;
     return (
       <div className="container">
         <Switch>
@@ -24,14 +26,14 @@ class App extends React.Component {
               if (API.isAuthenticated()) {
                 return <Redirect to="/chat" />;
               }
-              return <Home />;
+              return <Home onUserConnect={this.onUserConnect} />;
             }}
           />
           <Route
             exact
             path="/logout"
             render={() => {
-              localStorage.clear();
+              API.logout();
               return <Redirect to="/" />;
             }}
           />
@@ -41,7 +43,7 @@ class App extends React.Component {
               if (!API.isAuthenticated()) {
                 return <Redirect to="/" />;
               }
-              return <Chat />;
+              return <Chat currentUser={JSON.parse(currentUser)} />;
             }}
           />
         </Switch>

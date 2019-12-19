@@ -31,8 +31,8 @@ export default class Home extends React.Component {
           handleSignUp={this.isSigningUp}
         />
         <div className="main">
-          {isLoggingIn && <Signin />}
-          {isSigningUp && <Signup />}
+          {isLoggingIn && <Signin onUserConnect={this.props.onUserConnect} />}
+          {isSigningUp && <Signup onUserConnect={this.props.onUserConnect} />}
         </div>
       </div>
     );

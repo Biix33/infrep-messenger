@@ -2,11 +2,14 @@ import React from "react";
 import API from "../../services/API";
 
 export default class Signin extends React.Component {
-  state = {
-    email: "",
-    password: "",
-    errors: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      errors: []
+    };
+  }
 
   handleChange = event => {
     this.setState({
@@ -21,16 +24,16 @@ export default class Signin extends React.Component {
       return;
     try {
       const { data } = await API.signin(email, password);
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.username);
+      this.props.onUserConnect(data);
     } catch (e) {
       return console.error(e);
     }
-    return window.location = '/';
+    return (window.location = "/");
   };
 
   render() {
     const { email, password } = this.state;
+
     return (
       <div className="form-wrapper">
         <form action="" method="POST" onSubmit={this.handleSubmit}>
@@ -56,7 +59,7 @@ export default class Signin extends React.Component {
           </div>
           <div className="form-row">
             <button
-            className="btn"
+              className="btn"
               type="submit"
               disabled={!email.trim() || !password.trim() ? true : false}
             >

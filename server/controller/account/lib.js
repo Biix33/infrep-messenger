@@ -32,7 +32,7 @@ async function signup(req, res) {
     return res.status(200).json({
       text: "Success",
       token: userObject.getToken(),
-      username: username
+      user: user
     });
   } catch (e) {
     return res.status(500).json({ e });
@@ -62,7 +62,7 @@ async function login(req, res) {
     return res.status(200).json({
       token: foundUser.getToken(),
       text: "Authentication success",
-      username: foundUser.username
+      user: foundUser
     });
   } catch (e) {
     return res.status(500).json({ e });

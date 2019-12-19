@@ -85,8 +85,7 @@ export default class Signup extends React.Component {
       return;
     try {
       const { data } = await API.signup({ username, email, password });
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.username);
+      this.props.onUserConnect(data);
       window.location = "/chat";
     } catch (e) {
       return console.error(e);

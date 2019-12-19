@@ -6,15 +6,15 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export default class User extends React.Component {
   render() {
-    const { currentUser, usersCount } = this.props;
+    const { user, usersCount } = this.props;
     return (
       <div className="users-infos">
         <span>
           <FontAwesomeIcon icon={faUsers} /> {usersCount}
         </span>
         <div className="current-user">
-          <Avatar currentUser={currentUser} />
-          <div>{currentUser}</div>
+          <Avatar user={user.username} />
+          <div>{user.username}</div>
         </div>
       </div>
     );

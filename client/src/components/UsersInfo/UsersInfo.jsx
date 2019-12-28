@@ -4,7 +4,7 @@ import Avatar from "../Avatar/avatar.index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
-export default class User extends React.Component {
+export default class UsersInfo extends React.Component {
   render() {
     const { user, usersCount } = this.props;
     return (

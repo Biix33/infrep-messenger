@@ -25,7 +25,6 @@ code {
   display: flex;
   align-content: center;
   justify-content: center;
-  min-height: 100%;
 }
 
 .form-wrapper {
@@ -38,8 +37,7 @@ code {
   align-content: center;
   flex-direction: column;
   background-color: #f1f3f6;
-  box-shadow: 24px 24px 80px #3754AA40,
-    -24px -24px 80px #fff;
+  box-shadow: 24px 24px 80px #3754aa40, -24px -24px 80px #fff;
 }
 
 .form-row {
@@ -48,6 +46,11 @@ code {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+
+.self-center {
+  align-self: center;
+  min-width: 66%;
 }
 
 input {
@@ -61,15 +64,18 @@ label {
 }
 
 .btn {
-  padding: .8rem;
+  padding: 0.8rem;
   border: none;
   border-radius: 50px;
-  max-width: 66%;
   text-align: center;
-  background-color: #9c8bff;
+  background: linear-gradient(270deg, #241842 0%, #9c8bff 100%);
   color: #fff;
 }
 
 .btn:hover {
   background-color: #a292fb;
+}
+
+.content {
+  flex: 1;
 }

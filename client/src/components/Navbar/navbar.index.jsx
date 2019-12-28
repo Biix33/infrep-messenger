@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.styles.css";
-import User from "../UsersInfo/UsersInfo";
+import UsersInfo from "../UsersInfo/UsersInfo";
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -42,7 +42,7 @@ export default class Navbar extends React.Component {
         </a>
         <div className="right">
           {currentUser ? (
-            <User user={currentUser} usersCount={usersCount} />
+            <UsersInfo user={currentUser} usersCount={usersCount} />
           ) : (
             navLinks
           )}

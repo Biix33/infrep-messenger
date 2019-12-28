@@ -59,7 +59,7 @@ export default class Signin extends React.Component {
           </div>
           <div className="form-row">
             <button
-              className="btn"
+              className="btn self-center"
               type="submit"
               disabled={!email.trim() || !password.trim() ? true : false}
             >

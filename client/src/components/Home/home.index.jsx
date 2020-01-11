@@ -12,13 +12,28 @@ export default class Home extends React.Component {
       isLoggingIn: false,
       isSigningUp: false
     };
+
+    this.navLinks = [
+      {
+        name: "Créer un compte",
+        link: "/signup",
+        onClick: this.isSigningUp
+      },
+      {
+        name: "Se connecter",
+        link: "/login",
+        onClick: this.isLoggingIn
+      }
+    ];
   }
 
-  isLoggingIn() {
+  isLoggingIn(event) {
+    event.preventDefault();
     this.setState({ isLoggingIn: true, isSigningUp: false });
   }
 
-  isSigningUp() {
+  isSigningUp(event) {
+    event.preventDefault();
     this.setState({ isSigningUp: true, isLoggingIn: false });
   }
 
@@ -26,10 +41,7 @@ export default class Home extends React.Component {
     const { isLoggingIn, isSigningUp } = this.state;
     return (
       <div className="content">
-        <Navbar
-          handleLoggingIn={this.isLoggingIn}
-          handleSignUp={this.isSigningUp}
-        />
+        <Navbar navLinks={this.navLinks} />
         <div className="main">
           {isLoggingIn && <Signin onUserConnect={this.props.onUserConnect} />}
           {isSigningUp && <Signup onUserConnect={this.props.onUserConnect} />}

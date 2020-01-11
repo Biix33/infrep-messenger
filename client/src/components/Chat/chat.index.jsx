@@ -6,6 +6,7 @@ import Navbar from "../Navbar/navbar.index";
 import Form from "../Form/form.index";
 
 import Messenger from "../../services/Messenger";
+import UsersInfo from "../UsersInfo/UsersInfo";
 
 export default class Chat extends React.Component {
   state = {
@@ -21,7 +22,7 @@ export default class Chat extends React.Component {
   }
 
   componentDidUpdate() {
-    setTimeout(() => this.setState({ newUserConnected: false }), 10000);
+    setTimeout(() => this.setState({ newUserConnected: false }), 8000);
   }
 
   addMessage = newMessage => {
@@ -52,9 +53,16 @@ export default class Chat extends React.Component {
   render() {
     const { usersCount, messages, newUserConnected } = this.state;
     const { currentUser } = this.props;
+    const navItems = [
+      {
+        name: <UsersInfo user={currentUser} usersCount={usersCount} />,
+        link: "/",
+        onclick: ""
+      }
+    ];
     return (
       <div id="chat-container">
-        <Navbar currentUser={currentUser} usersCount={usersCount} />
+        <Navbar navLinks={navItems} />
         {newUserConnected && (
           <div>{newUserConnected.username} vient de se connecter</div>
         )}

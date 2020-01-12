@@ -1,11 +1,5 @@
-.users-infos {
-  display: flex;
-}
-
 .current-user {
   flex: 8 1;
-  padding: 1rem 0;
-  margin: 0 1rem;
   color: aliceblue;
   text-align: center;
 }

@@ -8,8 +8,10 @@
 
 .nav-link,
 .nav-brand {
-  padding: 1rem;
-  display: block;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-decoration: none;
   color: aliceblue;
 }

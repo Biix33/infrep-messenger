@@ -8,11 +8,24 @@ import Form from "../Form/form.index";
 import Messenger from "../../services/Messenger";
 import UsersInfo from "../UsersInfo/UsersInfo";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
+
 export default class Chat extends React.Component {
   state = {
     messages: [],
     usersCount: 0,
-    newUserConnected: false
+    newUserConnected: false,
+    displayUserMenu: false
+  };
+
+  displayUserMenu = event => {
+    event.preventDefault();
+    if (this.state.displayUserMenu) {
+      this.setState({ displayUserMenu: false });
+    } else {
+      this.setState({ displayUserMenu: true });
+    }
   };
 
   componentDidMount() {
@@ -51,13 +64,28 @@ export default class Chat extends React.Component {
   };
 
   render() {
-    const { usersCount, messages, newUserConnected } = this.state;
+    const {
+      usersCount,
+      messages,
+      newUserConnected,
+      displayUserMenu
+    } = this.state;
     const { currentUser } = this.props;
     const navItems = [
       {
-        name: <UsersInfo user={currentUser} usersCount={usersCount} />,
+        name: (
+          <div className="user__count">
+            <FontAwesomeIcon icon={faUsers} />
+            <span>{usersCount}</span>
+          </div>
+        ),
         link: "/",
         onclick: ""
+      },
+      {
+        name: <UsersInfo user={currentUser} usersCount={usersCount} />,
+        link: "/",
+        onClick: this.displayUserMenu
       }
     ];
     return (
@@ -67,6 +95,16 @@ export default class Chat extends React.Component {
           <div>{newUserConnected.username} vient de se connecter</div>
         )}
         <div className="scroller">
+          {displayUserMenu && (
+            <div className="user__menu">
+              <a href="/" className="nav-link">
+                Mon profil
+              </a>
+              <a href="/logout" className="nav-link">
+                Se déconnecter
+              </a>
+            </div>
+          )}
           <List currentUser={currentUser} messages={messages} />
         </div>
         <section id="form-message">

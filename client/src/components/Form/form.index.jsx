@@ -4,9 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 export default class Form extends React.Component {
-  state = {
-    message: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ""
+    };
+    this.textInput = React.createRef();
+  }
 
   handleChange = event => {
     this.setState({ message: event.target.value });
@@ -16,13 +20,19 @@ export default class Form extends React.Component {
     event.preventDefault();
     this.props.onSend(this.state.message);
     this.setState({ message: "" });
+    this.textInput.current.focus();
   };
+
+  componentDidMount() {
+    this.textInput.current.focus();
+  }
 
   render() {
     return (
       <form action="" method="" onSubmit={this.handleSubmit}>
         <textarea
           className="input-message"
+          ref={this.textInput}
           value={this.state.message}
           onChange={this.handleChange}
           placeholder="Ecrivez ici..."

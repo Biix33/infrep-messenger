@@ -1,12 +1,13 @@
 import React from "react";
 import "./chat.design.css";
 
-import List from "../List";
+import List from "../Message/List";
 import Navbar from "../Navbar/navbar.index";
 import Form from "../Form/form.index";
 
 import Messenger from "../../services/Messenger";
 import UsersInfo from "../UsersInfo/UsersInfo";
+import { UserMenu } from "../UsersInfo/UserMenu";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
@@ -91,20 +92,13 @@ export default class Chat extends React.Component {
     return (
       <div id="chat-container">
         <Navbar navLinks={navItems} />
-        {newUserConnected && (
-          <div>{newUserConnected.username} vient de se connecter</div>
-        )}
         <div className="scroller">
-          {displayUserMenu && (
-            <div className="user__menu">
-              <a href="/" className="nav-link">
-                Mon profil
-              </a>
-              <a href="/logout" className="nav-link">
-                Se déconnecter
-              </a>
+          {newUserConnected && currentUser.email !== newUserConnected.email && (
+            <div className="user__connected">
+              {newUserConnected.username} vient de se connecter
             </div>
           )}
+          {displayUserMenu && <UserMenu />}
           <List currentUser={currentUser} messages={messages} />
         </div>
         <section id="form-message">

@@ -1,5 +1,7 @@
 import React from "react";
 import "./form.styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 export default class Form extends React.Component {
   state = {
@@ -31,7 +33,7 @@ export default class Form extends React.Component {
           type="submit"
           disabled={!this.state.message.trim() ? true : false}
         >
-          Envoyer
+          <FontAwesomeIcon icon={faPaperPlane} />
         </button>
       </form>
     );

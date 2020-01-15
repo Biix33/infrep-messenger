@@ -70,10 +70,11 @@ label {
   text-align: center;
   background: linear-gradient(270deg, #241842 0%, #9c8bff 100%);
   color: #fff;
+  transition: all ease-in 300ms;
 }
 
-.btn:hover {
-  background-color: #a292fb;
+.btn[disabled] {
+  background: #241842;
 }
 
 .content {

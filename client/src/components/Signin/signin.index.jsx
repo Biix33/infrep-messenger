@@ -36,6 +36,7 @@ export default class Signin extends React.Component {
 
     return (
       <div className="form-wrapper">
+        <h4>Se connecter</h4>
         <form action="" method="POST" onSubmit={this.handleSubmit}>
           <div className="form-row">
             <label htmlFor="email">Email</label>

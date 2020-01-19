@@ -19,6 +19,10 @@ const user = mongoose.Schema(
     password: {
       type: String,
       required: true
+    },
+    avatar: {
+      type: String,
+      lowercase: true
     }
   },
   {
@@ -30,12 +34,12 @@ const user = mongoose.Schema(
 );
 
 user.methods = {
-    authenticate: function (password) {
-        return passwordHash.verify(password, this.password);
-    },
-    getToken: function () {
-        return jwt.encode(this, config.secret);
-    }
+  authenticate: function(password) {
+    return passwordHash.verify(password, this.password);
+  },
+  getToken: function() {
+    return jwt.encode(this, config.secret);
+  }
 };
 
 module.exports = mongoose.model("User", user);

@@ -1,22 +1,25 @@
 import React from "react";
 import "./chat.design.css";
 
-import List from "../List";
+import List from "../Message/List";
 import Navbar from "../Navbar/navbar.index";
 import Form from "../Form/form.index";
 
 import Messenger from "../../services/Messenger";
-import UsersInfo from "../UsersInfo/UsersInfo";
+import { UserInfos } from "../UsersInfo/user.infos";
+import { UserMenu } from "../UsersInfo/user.menu";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { UserList } from "../UsersInfo/users.list";
 
 export default class Chat extends React.Component {
   state = {
     messages: [],
     usersCount: 0,
     newUserConnected: false,
-    displayUserMenu: false
+    displayUserMenu: false,
+    displayUserList: false
   };
 
   displayUserMenu = event => {
@@ -25,6 +28,15 @@ export default class Chat extends React.Component {
       this.setState({ displayUserMenu: false });
     } else {
       this.setState({ displayUserMenu: true });
+    }
+  };
+
+  displayUserList = event => {
+    event.preventDefault();
+    if (this.state.displayUserList) {
+      this.setState({ displayUserList: false });
+    } else {
+      this.setState({ displayUserList: true });
     }
   };
 
@@ -68,9 +80,14 @@ export default class Chat extends React.Component {
       usersCount,
       messages,
       newUserConnected,
-      displayUserMenu
+      displayUserMenu,
+      displayUserList
     } = this.state;
+
     const { currentUser } = this.props;
+
+    const list = [{ username: "vd", avatar: "dedd" }];
+
     const navItems = [
       {
         name: (
@@ -80,31 +97,26 @@ export default class Chat extends React.Component {
           </div>
         ),
         link: "/",
-        onclick: ""
+        onClick: this.displayUserList
       },
       {
-        name: <UsersInfo user={currentUser} usersCount={usersCount} />,
+        name: <UserInfos user={currentUser} usersCount={usersCount} />,
         link: "/",
         onClick: this.displayUserMenu
       }
     ];
+
     return (
       <div id="chat-container">
         <Navbar navLinks={navItems} />
-        {newUserConnected && (
-          <div>{newUserConnected.username} vient de se connecter</div>
-        )}
         <div className="scroller">
-          {displayUserMenu && (
-            <div className="user__menu">
-              <a href="/" className="nav-link">
-                Mon profil
-              </a>
-              <a href="/logout" className="nav-link">
-                Se déconnecter
-              </a>
+          {newUserConnected && currentUser.email !== newUserConnected.email && (
+            <div className="user__connected">
+              {newUserConnected.username} vient de se connecter
             </div>
           )}
+          {displayUserList && <UserList list={list} />}
+          {displayUserMenu && <UserMenu />}
           <List currentUser={currentUser} messages={messages} />
         </div>
         <section id="form-message">

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import Avatar from "../Avatar/avatar.index";
+import { Avatar } from "../Avatar/avatar.index";
 
 function Message(props) {
   const { children, self, me } = props;

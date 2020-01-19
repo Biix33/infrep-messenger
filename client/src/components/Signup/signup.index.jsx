@@ -147,6 +147,10 @@ export default class Signup extends React.Component {
           />
         </div>
         <div className="form-row">
+          <label htmlFor="avatar">Avatar</label>
+          <input type="file" name="avatar" id="avatar" />
+        </div>
+        <div className="form-row">
           <button
             className="btn self-center"
             type="submit"

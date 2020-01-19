@@ -34,15 +34,15 @@
   justify-content: center;
 }
 
-.user__menu {
+.user__connected {
   position: absolute;
   top: 0;
-  right: 0;
   margin: .5rem;
-  z-index: 10;
+  padding: .5rem;
+  z-index: 5;
+  box-shadow: .5rem .5rem 1rem #3754aa40;
 
-  display: flex;
-  flex-direction: column;
   border-radius: 4px;
-  background-color: blue;
+  background-color: #9c8bffbe;
+  color: #fff;
 }

@@ -154,7 +154,7 @@ export default class Signup extends React.Component {
           <button
             className="btn self-center"
             type="submit"
-            disabled={!formValid}
+            disabled={formValid}
             onClick={this.handleSubmit}
           >
             S'inscrire

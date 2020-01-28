@@ -68,8 +68,7 @@ label {
   border: none;
   border-radius: 50px;
   text-align: center;
-  background: linear-gradient(270deg, #241842 0%, #9c8bff 100%);
-  color: #fff;
+  color: linear-gradient(270deg, #241842 0%, #9c8bff 100%);;
   transition: all ease-in 300ms;
 }
 
@@ -79,4 +78,12 @@ label {
 
 .content {
   flex: 1;
+}
+
+.bg-purple-gradient {
+  background: linear-gradient(270deg, #241842 0%, #9c8bff 100%);
+}
+
+.flex-column {
+  flex-direction: column;
 }

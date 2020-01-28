@@ -25,7 +25,7 @@ export default class Messenger {
 
   /**
    * Inform server that user connected
-   * @param {String} username 
+   * @param {String} username
    */
   join(username) {
     this.socket.emit("user_join", username);

@@ -57,11 +57,12 @@ webServer.listen(8000, err => {
 socketServer.on("connection", socket => {
   sockets.push(socket);
 
-  socket.on("user_join", username => {
-    socket.user = username;
+  socket.on("user_join", user => {
+    socket.user = user;
+    const newSocks = sockets.slice();
 
     const data = {
-      user: username,
+      user: user,
       count: sockets.length
     };
 

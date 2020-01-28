@@ -29,7 +29,7 @@ export default class Form extends React.Component {
 
   render() {
     return (
-      <form action="" method="" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="bg-purple-gradient">
         <textarea
           className="input-message"
           ref={this.textInput}

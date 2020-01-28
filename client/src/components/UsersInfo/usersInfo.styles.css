@@ -1,5 +1,5 @@
 .current-user {
-  flex: 8 1;
+  display: flex;
   color: aliceblue;
   text-align: center;
 }
@@ -8,7 +8,7 @@
   position: absolute;
   top: 0;
   margin: 0.5rem;
-  background-color: #7fffd4;
+  background-color: blue;
 }
 
 .user__menu {

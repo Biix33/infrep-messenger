@@ -6,7 +6,7 @@ export const UserList = ({list}) => (
     {list.map((user, i) => {
       return (
         <li key={i} className="nav-link">
-          <UserInfos user={user} />
+          <UserInfos user={user} classNames={['current-user']}/>
         </li>
       );
     })}

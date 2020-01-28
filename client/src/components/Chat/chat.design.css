@@ -5,21 +5,20 @@
 .scroller {
   position: relative;
   flex: 1;
+  background-color: aliceblue;
+  background-image: url("../../img/blue-2384333_1280.png");
+  background-size: cover;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  max-height: calc(100vh - 162px);
+  max-height: calc(100vh - 150px);
 }
 
 #chat-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-
-  background-color: aliceblue;
-  background-image: url("../../img/blue-2384333_1280.png");
-  background-size: cover;
 }
 
 #main-messages {

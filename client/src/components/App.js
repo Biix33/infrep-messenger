@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Chat from "./Chat/chat.index";
 import API from "../services/API";
 import Home from "./Home/home.index";
+import { Profil } from "./Profil/profil.index";
 
 class App extends React.Component {
   state = {
@@ -44,6 +45,16 @@ class App extends React.Component {
                 return <Redirect to="/" />;
               }
               return <Chat currentUser={JSON.parse(currentUser)} />;
+            }}
+          />
+          <Route
+            exact
+            path="/me"
+            render={() => {
+              if (!API.isAuthenticated()) {
+                return <Redirect to="/" />;
+              }
+              return <Profil user={currentUser} />;
             }}
           />
         </Switch>

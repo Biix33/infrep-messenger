@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
 });
 
 app.use("/user", router);
-require(__dirname + "/controller/userController")(router);
+require(__dirname + "/controller/user/user.routes")(router);
 
 const webServer = http.Server(app);
 

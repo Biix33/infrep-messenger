@@ -1,16 +1,11 @@
 # Infrep Messenger
 
-> Real time communication app, with react and nodejs
+> Real time communication app, with react, nodejs, mongodb and docker
 
 ## Installation
 
-// TODO
-
-## Develop
-
-Go into the `client` folder and run
-
+Clone the repo and execute
 ```sh
-cd client
-npm start
+docker-compose up -d
 ```
+Go to localhost:3000

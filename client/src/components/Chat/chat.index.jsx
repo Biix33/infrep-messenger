@@ -115,7 +115,10 @@ export default class Chat extends React.Component {
               {newUserConnected.username} vient de se connecter
             </div>
           )}
+<<<<<<< HEAD
           {displayUserList && <UserList list={list} />}
+=======
+>>>>>>> 44e57bd163dd9cc4d22b9b8f727d045c24d8d2c3
           {displayUserMenu && <UserMenu />}
           <List currentUser={currentUser} messages={messages} />
         </div>

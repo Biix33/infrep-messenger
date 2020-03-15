@@ -45,3 +45,16 @@
   background-color: #9c8bffbe;
   color: #fff;
 }
+
+.user__connected {
+  position: absolute;
+  top: 0;
+  margin: .5rem;
+  padding: .5rem;
+  z-index: 5;
+  box-shadow: .5rem .5rem 1rem #3754aa40;
+
+  border-radius: 4px;
+  background-color: #9c8bffbe;
+  color: #fff;
+}

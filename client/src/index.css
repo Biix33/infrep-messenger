@@ -68,7 +68,8 @@ label {
   border: none;
   border-radius: 50px;
   text-align: center;
-  color: linear-gradient(270deg, #241842 0%, #9c8bff 100%);;
+  background: linear-gradient(270deg, #241842 0%, #9c8bff 100%);
+  color: #fff;
   transition: all ease-in 300ms;
 }
 
